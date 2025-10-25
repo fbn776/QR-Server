@@ -24,6 +24,19 @@ const server = http.createServer(async (req, res) => {
       // Parse size (e.g., "200x200")
       const [width, height] = size.split('x').map(Number);
 
+      console.log("WH:", width, height)
+      if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0 || !width || !height) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid size parameter' }));
+        return;
+      }
+
+      if (width > 10000 || height > 10000) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Size too large' }));
+        return;
+      }
+
       // Generate QR code as PNG buffer
       const pngBuffer = await QRCode.toBuffer(data, {
         width,
