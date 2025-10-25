@@ -1,0 +1,23 @@
+{
+  "name": "qr-gen-server",
+  "version": "1.0.0",
+  "description": "A simple server to generate QR codes",
+  "authors": [
+    {
+      "name": "Febin Nelson P",
+      "email": "fbn776@gmail.com"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "fbn776",
+  "license": "ISC",
+  "type": "module",
+  "packageManager": "pnpm@10.15.1",
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
